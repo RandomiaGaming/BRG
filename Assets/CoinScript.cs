@@ -17,7 +17,6 @@ public class CoinScript : MonoBehaviour
     {
         if (CurrentTime >= AnimationTime + RegenerateTime)
         {
-            CurrentTime += Time.deltaTime;
             cd.enabled = true;
             sr.enabled = true;
             transform.localScale = Vector3.one;

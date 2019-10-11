@@ -2,7 +2,7 @@
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
-    public enum RotationSensativity { Slow, Normal, Fast, ComiclyFast }
+    public enum RotationSensativity { Normal, Fast, SuperFast }
     public RotationSensativity CurrentRotationSensativity = RotationSensativity.Normal;
     private const float MoveForce = 4;
     private const float MaxMoveForce = 20;
@@ -14,13 +14,20 @@ public class Player : MonoBehaviour
     public KeyCode LeftKey;
     public KeyCode RightKey;
 
+    [Space]
+    public GameObject Bomb;
+    public GameObject Missile;
+    [Space]
+    public Transform BombLauncher;
+    public Transform MissileLauncher;
+
     [HideInInspector]
     public int Lap = 0;
     [HideInInspector]
     public float StunnedTime = 0;
     [HideInInspector]
     public int ProjectileCount = 5;
-    private float Rotation = 0;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -36,26 +43,18 @@ public class Player : MonoBehaviour
         else
         {
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-            float SteeringSpeed = 2;
+            float SteeringSpeed = 0;
             if (CurrentRotationSensativity == RotationSensativity.Normal)
             {
                 SteeringSpeed = 2;
             }
-            else if (CurrentRotationSensativity == RotationSensativity.Slow)
-            {
-                SteeringSpeed = 1;
-            }
             else if (CurrentRotationSensativity == RotationSensativity.Fast)
             {
+                SteeringSpeed = 3;
+            }
+            else if (CurrentRotationSensativity == RotationSensativity.SuperFast)
+            {
                 SteeringSpeed = 4;
-            }
-            else if (CurrentRotationSensativity == RotationSensativity.ComiclyFast)
-            {
-                SteeringSpeed = 100;
-            }
-            else
-            {
-                SteeringSpeed = 0;
             }
             if (Vector3.Distance(Vector3.zero, rb.velocity) < MaxMoveForce)
             {
@@ -63,13 +62,22 @@ public class Player : MonoBehaviour
             }
             if (Input.GetKey(LeftKey))
             {
-                Rotation += SteeringSpeed * Time.timeScale;
+                transform.rotation = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + SteeringSpeed * Time.timeScale);
             }
             else if (Input.GetKey(RightKey))
             {
-                Rotation -= SteeringSpeed * Time.timeScale;
+                transform.rotation = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z - SteeringSpeed * Time.timeScale);
             }
-            transform.rotation = Quaternion.Euler(0, 0, Rotation);
+            if (Input.GetKeyDown(UpKey) && ProjectileCount > 0)
+            {
+                ProjectileCount--;
+                Instantiate(Missile, MissileLauncher.position, transform.rotation);
+            }
+            else if (Input.GetKeyDown(DownKey) && ProjectileCount > 0)
+            {
+                ProjectileCount--;
+                Instantiate(Bomb, BombLauncher.position, transform.rotation);
+            }
         }
     }
 }

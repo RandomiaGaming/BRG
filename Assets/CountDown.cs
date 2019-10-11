@@ -4,13 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 public class CountDown : MonoBehaviour
 {
-    public float SecondsUntilStart = 6;
-    private Animator animator;
+    public int SecondsUntilStart = 3;
+    private float Timer = 0;
     private Text text;
     // Use this for initialization
     void Start()
     {
-        animator = GetComponent<Animator>();
         text = GetComponent<Text>();
     }
 
@@ -19,9 +18,17 @@ public class CountDown : MonoBehaviour
     {
         if (SecondsUntilStart > 0)
         {
+            Timer += Time.unscaledDeltaTime;
+            if (Timer >= 1)
+            {
+                Timer--;
+                SecondsUntilStart--;
+            }
+        }
+        if (SecondsUntilStart > 0)
+        {
             Time.timeScale = 0;
-            text.text = ((int)SecondsUntilStart).ToString();
-            SecondsUntilStart -= Time.unscaledDeltaTime;
+            text.text = SecondsUntilStart.ToString();
         }
         else
         {
