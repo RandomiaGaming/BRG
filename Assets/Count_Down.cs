@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class CountDown : MonoBehaviour
+public class Count_Down : MonoBehaviour
 {
     public int SecondsUntilStart = 3;
     private float Timer = 0;

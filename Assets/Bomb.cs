@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 public class Bomb : MonoBehaviour
 {
-    public float Timer = 3f;
-    public float FlashLength = 0.25f;
+    private float Timer = 3f;
+    private const float FlashLength = 0.25f;
     private bool StartedParticles = false;
     private SpriteRenderer sr;
     private void Start()
@@ -40,7 +40,7 @@ public class Bomb : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" && Timer <= 0)
         {
-            collision.GetComponent<Player>().StunnedTime = 3;
+            collision.GetComponent<Player>().Stunned_Time = 3;
         }
     }
 }

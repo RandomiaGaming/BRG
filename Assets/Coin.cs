@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class CoinScript : MonoBehaviour
+public class Coin : MonoBehaviour
 {
     private CircleCollider2D cd;
     private SpriteRenderer sr;
@@ -41,7 +41,7 @@ public class CoinScript : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             CurrentTime = 0;
-            collision.gameObject.GetComponent<Player>().ProjectileCount = 5;
+            collision.gameObject.GetComponent<Player>().Bomb_Count = 5;
         }
     }
 }

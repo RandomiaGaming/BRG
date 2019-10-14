@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Coin
+  - Check Point
   layers:
   - Default
   - TransparentFX
@@ -45,7 +46,7 @@ TagManager:
   - name: Ground
     uniqueID: 2061518969
     locked: 0
-  - name: FinishLine
+  - name: Finish Line
     uniqueID: 1035048083
     locked: 0
   - name: Coin

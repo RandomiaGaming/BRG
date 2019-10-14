@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraFollower : MonoBehaviour
+public class Multiplayer_Camera : MonoBehaviour
 {
     private List<Transform> PlayerTransforms;
     private Vector3 PanVelecity;

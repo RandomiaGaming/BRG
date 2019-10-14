@@ -63,13 +63,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Bomb.cs" />
-    <Compile Include="Assets\CameraFollower.cs" />
-    <Compile Include="Assets\CoinScript.cs" />
-    <Compile Include="Assets\CountDown.cs" />
-    <Compile Include="Assets\FinnishLine.cs" />
-    <Compile Include="Assets\Missile.cs" />
+    <Compile Include="Assets\Coin.cs" />
+    <Compile Include="Assets\Count_Down.cs" />
+    <Compile Include="Assets\Goal.cs" />
+    <Compile Include="Assets\Multiplayer_Camera.cs" />
     <Compile Include="Assets\PixelPerfectCollider2D.cs" />
+    <Compile Include="Assets\Place_Calculator.cs" />
     <Compile Include="Assets\Player.cs" />
+    <Compile Include="Assets\Player_Stats.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/RandomiaGaming/Documents/Unity Projects/Race Game/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
