@@ -16,13 +16,13 @@ public class Player : MonoBehaviour
     [Space]
     public GameObject Bomb_Prefab;
     [Space]
-    public Transform Front_Launcher;
-    public Transform Back_Launcher;
-    [Space]
     public int Lap = 0;
-    public int Place = 1;
+    public int Checkpoint = 0;
+    public float Next_Checkpoint_Distance = 0;
+    public int Place = 0;
     public float Stunned_Time = 0;
     public int Bomb_Count = 5;
+    public int Player_ID = 0;
 
     void Start()
     {
@@ -54,14 +54,14 @@ public class Player : MonoBehaviour
             if (Input.GetKeyDown(UpKey) && Bomb_Count > 0)
             {
                 Bomb_Count--;
-                GameObject Bomb = Instantiate(Bomb_Prefab, Front_Launcher.position, transform.rotation);
-                Bomb.GetComponent<Rigidbody2D>().velocity = transform.up * (Vector3.Distance(Vector3.zero, rb.velocity) * 2);
+                GameObject Bomb = Instantiate(Bomb_Prefab, transform.position + transform.up, transform.rotation);
+                Bomb.GetComponent<Rigidbody2D>().velocity = transform.up * ((Vector3.Distance(Vector3.zero, rb.velocity) + 5));
             }
             else if (Input.GetKeyDown(DownKey) && Bomb_Count > 0)
             {
                 Bomb_Count--;
-                GameObject Bomb = Instantiate(Bomb_Prefab, Back_Launcher.position, transform.rotation);
-                Bomb.GetComponent<Rigidbody2D>().velocity = transform.up * -1 * 3;
+                GameObject Bomb = Instantiate(Bomb_Prefab, transform.position - transform.up, transform.rotation);
+                Bomb.GetComponent<Rigidbody2D>().velocity = transform.up * -5;
             }
         }
     }
