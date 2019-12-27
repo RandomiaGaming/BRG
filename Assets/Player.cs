@@ -17,8 +17,9 @@ public class Player : MonoBehaviour
     public GameObject Bomb_Prefab;
     [Space]
     public int Lap = 0;
-    public int Checkpoint = 0;
-    public float Next_Checkpoint_Distance = 0;
+    public int Last_Touched_Checkpoint = 0;
+    public float Place_Checkpoint_Distance = 0;
+    public int Place_Checkpoint = 0;
     public int Place = 0;
     public float Stunned_Time = 0;
     public int Bomb_Count = 5;

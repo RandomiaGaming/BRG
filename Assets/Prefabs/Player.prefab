@@ -105,7 +105,7 @@ SpriteRenderer:
   m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5f17089c48b46c7419b04434b0dd7fb2, type: 3}
-  m_Color: {r: 0, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -148,17 +148,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 162f02b41aeb3564b95751eae8f29bf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UpKey: 119
-  DownKey: 115
-  LeftKey: 97
-  RightKey: 100
+  UpKey: 273
+  DownKey: 274
+  LeftKey: 276
+  RightKey: 275
   Bomb_Prefab: {fileID: 1754756215528668, guid: 124b4fb59b14cf2429a383d1a2aa5f74,
     type: 3}
-  Front_Launcher: {fileID: 7572527783497573285}
-  Back_Launcher: {fileID: 5613878912823077954}
-  Lap: 0
+  Lap: 1
+  Last_Touched_Checkpoint: 0
+  Place_Checkpoint_Distance: 0
+  Place_Checkpoint: 0
+  Place: 0
   Stunned_Time: 0
   Bomb_Count: 5
+  Player_ID: 2
 --- !u!60 &3793937775641728278
 PolygonCollider2D:
   m_ObjectHideFlags: 0

@@ -37,14 +37,29 @@ public class Place_Calculator : MonoBehaviour
     {
         foreach (Player Current_Player in All_Players)
         {
-            if (Current_Player.Checkpoint < All_Checkpoins.Count - 1)
+            if (Current_Player.Last_Touched_Checkpoint == All_Checkpoins.Count - 1)
             {
-                Current_Player.Next_Checkpoint_Distance = Vector3.Distance(Current_Player.transform.position, All_Checkpoins[Current_Player.Checkpoint + 1].transform.position);
+                if (Vector3.Distance(Current_Player.transform.position, All_Checkpoins[0].transform.position) < Vector3.Distance(All_Checkpoins[Current_Player.Last_Touched_Checkpoint].transform.position, All_Checkpoins[0].transform.position))
+                {
+                    Current_Player.Place_Checkpoint = 0;
+                }
+                else
+                {
+                    Current_Player.Place_Checkpoint = Current_Player.Last_Touched_Checkpoint;
+                }
             }
             else
             {
-                Current_Player.Next_Checkpoint_Distance = Vector3.Distance(Current_Player.transform.position, All_Checkpoins[0].transform.position);
+                if (Vector3.Distance(Current_Player.transform.position, All_Checkpoins[Current_Player.Last_Touched_Checkpoint + 1].transform.position) < Vector3.Distance(All_Checkpoins[Current_Player.Last_Touched_Checkpoint].transform.position, All_Checkpoins[Current_Player.Last_Touched_Checkpoint + 1].transform.position))
+                {
+                    Current_Player.Place_Checkpoint = Current_Player.Last_Touched_Checkpoint + 1;
+                }
+                else
+                {
+                    Current_Player.Place_Checkpoint = Current_Player.Last_Touched_Checkpoint;
+                }
             }
+            Current_Player.Place_Checkpoint_Distance = Vector3.Distance(Current_Player.transform.position, All_Checkpoins[Current_Player.Place_Checkpoint].transform.position);
         }
         foreach (Player Current_Player in All_Players)
         {
@@ -57,17 +72,17 @@ public class Place_Calculator : MonoBehaviour
                 }
                 else if (Current_Player.Lap == Comparing_Player.Lap)
                 {
-                    if (Current_Player.Checkpoint < Comparing_Player.Checkpoint)
+                    if (Current_Player.Place_Checkpoint < Comparing_Player.Place_Checkpoint)
                     {
                         Current_Player.Place++;
                     }
-                    else if (Current_Player.Checkpoint == Comparing_Player.Checkpoint)
+                    else if (Current_Player.Place_Checkpoint == Comparing_Player.Place_Checkpoint)
                     {
-                        if (Current_Player.Next_Checkpoint_Distance > Comparing_Player.Next_Checkpoint_Distance)
+                        if (Current_Player.Place_Checkpoint_Distance > Comparing_Player.Place_Checkpoint_Distance)
                         {
                             Current_Player.Place++;
                         }
-                        else if (Current_Player.Next_Checkpoint_Distance == Comparing_Player.Next_Checkpoint_Distance)
+                        else if (Current_Player.Place_Checkpoint_Distance == Comparing_Player.Place_Checkpoint_Distance)
                         {
                             if (Current_Player.Player_ID < Comparing_Player.Player_ID)
                             {
