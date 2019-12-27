@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-public class Bomb : MonoBehaviour
+public class Missile : MonoBehaviour
 {
     private float Timer = 3f;
     private const float FlashLength = 0.25f;

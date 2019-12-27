@@ -14,7 +14,7 @@ public class Player_Stats : MonoBehaviour
     {
         for (int i = 0; i < Bomb_Images.Count; i++)
         {
-            if (Stats_Target.Bomb_Count > i)
+            if (Stats_Target.PowerUp_Count > i)
             {
                 Bomb_Images[i].color = Color.red;
             }

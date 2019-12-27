@@ -41,7 +41,7 @@ public class Coin : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             CurrentTime = 0;
-            collision.gameObject.GetComponent<Player>().Bomb_Count = 5;
+            collision.gameObject.GetComponent<Player>().PowerUp_Count = 5;
         }
     }
 }

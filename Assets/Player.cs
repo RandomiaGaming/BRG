@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
-    private const float MoveForce = 4;
-    private const float MaxMoveForce = 20;
+    private const float MoveForce = 0.4f;
+    private const float MaxMoveForce = 10;
 
     private Rigidbody2D rb;
 
@@ -14,7 +13,7 @@ public class Player : MonoBehaviour
     public KeyCode RightKey;
 
     [Space]
-    public GameObject Bomb_Prefab;
+    public GameObject Missile_Prefab;
     [Space]
     public int Lap = 0;
     public int Last_Touched_Checkpoint = 0;
@@ -22,7 +21,7 @@ public class Player : MonoBehaviour
     public int Place_Checkpoint = 0;
     public int Place = 0;
     public float Stunned_Time = 0;
-    public int Bomb_Count = 5;
+    public int PowerUp_Count = 5;
     public int Player_ID = 0;
 
     void Start()
@@ -42,7 +41,7 @@ public class Player : MonoBehaviour
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             if (Vector3.Distance(Vector3.zero, rb.velocity) < MaxMoveForce)
             {
-                rb.AddForce(transform.up * MoveForce * Time.timeScale);
+                rb.velocity += (Vector2)transform.up * MoveForce * Time.timeScale;
             }
             if (Input.GetKey(LeftKey))
             {
@@ -52,17 +51,17 @@ public class Player : MonoBehaviour
             {
                 transform.rotation = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z - 3 * Time.timeScale);
             }
-            if (Input.GetKeyDown(UpKey) && Bomb_Count > 0)
+            if (Input.GetKeyDown(UpKey) && PowerUp_Count > 0)
             {
-                Bomb_Count--;
-                GameObject Bomb = Instantiate(Bomb_Prefab, transform.position + transform.up, transform.rotation);
-                Bomb.GetComponent<Rigidbody2D>().velocity = transform.up * ((Vector3.Distance(Vector3.zero, rb.velocity) + 5));
+                PowerUp_Count--;
+                GameObject Missile = Instantiate(Missile_Prefab, transform.position + transform.up, transform.rotation);
+                Missile.GetComponent<Rigidbody2D>().velocity = transform.up * ((Vector3.Distance(Vector3.zero, rb.velocity) + 5));
+                Missile.transform.rotation = transform.rotation;
             }
-            else if (Input.GetKeyDown(DownKey) && Bomb_Count > 0)
+            else if (Input.GetKeyDown(DownKey) && PowerUp_Count > 0)
             {
-                Bomb_Count--;
-                GameObject Bomb = Instantiate(Bomb_Prefab, transform.position - transform.up, transform.rotation);
-                Bomb.GetComponent<Rigidbody2D>().velocity = transform.up * -5;
+                PowerUp_Count--;
+                rb.velocity = (Vector2)transform.up * MaxMoveForce;
             }
         }
     }

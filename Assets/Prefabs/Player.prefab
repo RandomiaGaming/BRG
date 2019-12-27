@@ -58,7 +58,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3793937775641728279}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: 3.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7572527783497573285}
@@ -152,7 +152,7 @@ MonoBehaviour:
   DownKey: 274
   LeftKey: 276
   RightKey: 275
-  Bomb_Prefab: {fileID: 1754756215528668, guid: 124b4fb59b14cf2429a383d1a2aa5f74,
+  Missile_Prefab: {fileID: 1754756215528668, guid: 124b4fb59b14cf2429a383d1a2aa5f74,
     type: 3}
   Lap: 1
   Last_Touched_Checkpoint: 0
@@ -160,7 +160,7 @@ MonoBehaviour:
   Place_Checkpoint: 0
   Place: 0
   Stunned_Time: 0
-  Bomb_Count: 5
+  PowerUp_Count: 5
   Player_ID: 2
 --- !u!60 &3793937775641728278
 PolygonCollider2D:
