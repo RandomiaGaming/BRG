@@ -20,7 +20,7 @@ public class Goal : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Player Collided_Player = collision.gameObject.GetComponent<Player>();
+            PlayerController Collided_Player = collision.gameObject.GetComponent<PlayerController>();
             Collided_Player.Lap++;
         }
     }

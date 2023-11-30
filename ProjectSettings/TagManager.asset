@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Coin
   - Checkpoint
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -57,4 +58,7 @@ TagManager:
     locked: 0
   - name: Projectile
     uniqueID: 2184739607
+    locked: 0
+  - name: GUI
+    uniqueID: 1441390161
     locked: 0
