@@ -2,14 +2,14 @@
 using UnityEngine;
 public class Place_Calculator : MonoBehaviour
 {
-    private List<Player> All_Players = new List<Player>();
+    private List<PlayerController> All_Players = new List<PlayerController>();
     private List<Checkpoint> All_Checkpoins = new List<Checkpoint>();
     private void Start()
     {
-        All_Players = new List<Player>();
+        All_Players = new List<PlayerController>();
         foreach (GameObject Player in GameObject.FindGameObjectsWithTag("Player"))
         {
-            All_Players.Add(Player.GetComponent<Player>());
+            All_Players.Add(Player.GetComponent<PlayerController>());
         }
         All_Checkpoins = new List<Checkpoint>();
         foreach (GameObject Checkpoint in GameObject.FindGameObjectsWithTag("Checkpoint"))
@@ -35,7 +35,7 @@ public class Place_Calculator : MonoBehaviour
     }
     private void Update()
     {
-        foreach (Player Current_Player in All_Players)
+        foreach (PlayerController Current_Player in All_Players)
         {
             if (Current_Player.Last_Touched_Checkpoint == All_Checkpoins.Count - 1)
             {
@@ -61,10 +61,10 @@ public class Place_Calculator : MonoBehaviour
             }
             Current_Player.Place_Checkpoint_Distance = Vector3.Distance(Current_Player.transform.position, All_Checkpoins[Current_Player.Place_Checkpoint].transform.position);
         }
-        foreach (Player Current_Player in All_Players)
+        foreach (PlayerController Current_Player in All_Players)
         {
             Current_Player.Place = 1;
-            foreach (Player Comparing_Player in All_Players)
+            foreach (PlayerController Comparing_Player in All_Players)
             {
                 if (Current_Player.Lap < Comparing_Player.Lap)
                 {

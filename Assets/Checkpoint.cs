@@ -13,26 +13,26 @@ public class Checkpoint : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "PlayerController")
         {
-            Player Collided_Player = collision.GetComponent<Player>();
-            if (Checkpoint_ID == 0 && Collided_Player.Last_Touched_Checkpoint == Max_ID)
+            PlayerController Collided_PlayerController = collision.GetComponent<PlayerController>();
+            if (Checkpoint_ID == 0 && Collided_PlayerController.Last_Touched_Checkpoint == Max_ID)
             {
-                Collided_Player.Last_Touched_Checkpoint = Checkpoint_ID;
-                Collided_Player.Lap++;
+                Collided_PlayerController.Last_Touched_Checkpoint = Checkpoint_ID;
+                Collided_PlayerController.Lap++;
             }
-            else if (Collided_Player.Last_Touched_Checkpoint + 1 == Checkpoint_ID)
+            else if (Collided_PlayerController.Last_Touched_Checkpoint + 1 == Checkpoint_ID)
             {
-                Collided_Player.Last_Touched_Checkpoint = Checkpoint_ID;
+                Collided_PlayerController.Last_Touched_Checkpoint = Checkpoint_ID;
             }
-            else if (Checkpoint_ID == Max_ID && Collided_Player.Last_Touched_Checkpoint == 0)
+            else if (Checkpoint_ID == Max_ID && Collided_PlayerController.Last_Touched_Checkpoint == 0)
             {
-                Collided_Player.Last_Touched_Checkpoint = Checkpoint_ID;
-                Collided_Player.Lap--;
+                Collided_PlayerController.Last_Touched_Checkpoint = Checkpoint_ID;
+                Collided_PlayerController.Lap--;
             }
-            else if (Collided_Player.Last_Touched_Checkpoint - 1 == Checkpoint_ID)
+            else if (Collided_PlayerController.Last_Touched_Checkpoint - 1 == Checkpoint_ID)
             {
-                Collided_Player.Last_Touched_Checkpoint = Checkpoint_ID;
+                Collided_PlayerController.Last_Touched_Checkpoint = Checkpoint_ID;
             }
         }
     }

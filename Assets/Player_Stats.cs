@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class Player_Stats : MonoBehaviour
 {
-    public Player Stats_Target;
+    public PlayerController Stats_Target;
     [Space]
     public List<Image> Bomb_Images;
     public Text Place_Text;
